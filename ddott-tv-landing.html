@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ddott.TV — Decentralised Cinema & Dwin Universe Ecosystem</title>
+    <style>
+        :root {
+            --bg-base: #060a13;
+            --bg-surface: #0c1322;
+            --bg-card: rgba(18, 28, 49, 0.75);
+            --accent-purple: #a855f7;
+            --accent-cyan: #00ffd2;
+            --accent-gold: #fbbf24;
+            --accent-crimson: #f43f5e;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-glow: rgba(168, 85, 247, 0.25);
+            --border-muted: rgba(255, 255, 255, 0.06);
+            --font-mono: 'Space Mono', monospace, Consolas, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Glow Effects */
+        .ambient-glow-1 {
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .ambient-glow-2 {
+            position: absolute;
+            top: 60%;
+            right: 5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 255, 210, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header Style */
+        header {
+            background: rgba(6, 10, 19, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-muted);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-symbol {
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .logo-text-group h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text-group span {
+            font-size: 10px;
+            color: var(--accent-cyan);
+            font-family: var(--font-mono);
+            letter-spacing: 1.5px;
+            display: block;
+            margin-top: -2px;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-waitlist {
+            background: linear-gradient(90deg, #9333ea, #06b6d4);
+            color: #000;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-waitlist:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 90px 0 60px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: var(--accent-purple);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h2 {
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero h2 span {
+            background: linear-gradient(to right, #fff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 19px;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto 36px auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-base);
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-cyan);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-purple);
+            background: rgba(168, 85, 247, 0.05);
+        }
+
+        /* Marquee Ticker */
+        .ticker-wrap {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-muted);
+            border-bottom: 1px solid var(--border-muted);
+            padding: 18px 0;
+            margin-top: 40px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-content {
+            display: inline-flex;
+            gap: 50px;
+            animation: marquee 25s linear infinite;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+
+        .ticker-item span {
+            color: var(--accent-cyan);
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Statistics Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin: 60px 0;
+        }
+
+        .stat-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-muted);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-glow);
+        }
+
+        .stat-card .val {
+            font-size: 36px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .stat-card .lbl {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Image Infrastructure Architecture Node */
+        .asset-showcase {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px dashed rgba(148, 163, 184, 0.15);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 70px;
+        }
+
+        .asset-title {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .asset-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .asset-box {
+            background: #090e1a;
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent-cyan);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .asset-box::before {
+            content: 'SYS_IMG';
+            position: absolute;
+            right: -10px;
+            bottom: -5px;
+            font-size: 24px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+        }
+
+        .asset-box span {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        /* Steps Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h3 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .step-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-muted);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .step-num {
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-bottom: 16px;
+        }
+
+        .step-icon {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .step-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Platform Features Layout */
+        .features-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .feat-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-muted);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feat-top h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feat-top p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        /* Live System Dashboard Mock inside HTML */
+        .wallet-mock {
+            background: #070c16;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px;
+            font-family: var(--font-mono);
+            margin-top: auto;
+        }
+
+        .mock-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            padding-bottom: 6px;
+        }
+        .mock-row:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .mock-lbl { color: var(--text-secondary); }
+        .mock-val { color: var(--text-primary); font-weight: bold; }
+
+        /* Ecosystem Cinema & Three Modes UI */
+        .cinema-banner {
+            background: linear-gradient(135deg, #101726 0%, #070c16 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        @media(max-width: 768px) {
+            .cinema-banner { flex-direction: column; text-align: center; }
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .mode-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-muted);
+            border-radius: 16px;
+            padding: 32px;
+            border-top: 4px solid transparent;
+        }
+
+        .mode-card.emowall { border-top-color: var(--accent-purple); }
+        .mode-card.ddott { border-top-color: var(--accent-cyan); }
+        .mode-card.creator { border-top-color: var(--accent-gold); }
+
+        /* COMING SOON DEEP INTEGRATION PIPELINE */
+        .coming-soon-sec {
+            background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-base) 100%);
+            border: 1px solid rgba(0, 255, 210, 0.12);
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 80px;
+        }
+
+        .pipeline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        @media(max-width: 900px) {
+            .pipeline-grid { grid-template-columns: 1fr; }
+        }
+
+        .pipe-card {
+            background: rgba(7, 12, 22, 0.8);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+        }
+
+        .pipe-badge {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            background: rgba(0, 255, 210, 0.1);
+            color: var(--accent-cyan);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .pipe-card h4 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 14px;
+            color: #fff;
+        }
+
+        .pipe-card.danger-gate { border-left: 4px solid var(--accent-crimson); }
+        .pipe-card.edu-gate { border-left: 4px solid var(--accent-gold); }
+
+        .pipe-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .pipe-malayalam {
+            background: rgba(255,255,255,0.02);
+            border-left: 3px solid var(--accent-purple);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 13px;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .teacher-quote {
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: var(--accent-cyan);
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* Ecosystem Universe Matrix Map */
+        .matrix-sec {
+            margin-bottom: 80px;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .matrix-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-muted);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .matrix-box h5 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .matrix-box p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Footer Layout */
+        footer {
+            background: #03060c;
+            border-top: 1px solid var(--border-muted);
+            padding: 60px 0 30px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media(max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        .footer-brand h4 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 320px;
+            margin-bottom: 16px;
+        }
+
+        .footer-col h5 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        @media(max-width: 600px) {
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
+
+    <!-- NAVBAR HEADER BLOCK -->
+    <header>
+        <div class="container header-wrap">
+            <a href="#" class="logo-box">
+                <div class="logo-symbol">🦋</div>
+                <div class="logo-text-group">
+                    <h1>DdottTV</h1>
+                    <span>DWIN UNIVERSE</span>
+                </div>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#modes">Ecosystem Modes</a></li>
+                    <li><a href="#pipeline">Future Vision</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#waitlist" class="btn-waitlist">Join Waitlist</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO DISPLAY NODE -->
+    <section class="container hero">
+        <div class="hero-badge">⚡ The Future of Decentralised Cinema</div>
+        <h2>WATCH. CREATE.<br><span>EARN ANYWHERE.</span></h2>
+        <p class="hero-desc">Our community-owned ecosystem allows creators to upload and immediately receive spot payments in open-commission proceeds. Advanced Emo AI architecture is seamlessly integrated across every screen block.</p>
+        <div class="hero-buttons">
+            <a href="#waitlist" class="btn-primary">Explore Platform</a>
+            <a href="#how-it-works" class="btn-secondary">How It Works</a>
+        </div>
+    </section>
+
+    <!-- MARQUEE INFINITE TICKER LAYOUT -->
+    <div class="ticker-wrap">
+        <div class="ticker-content">
+            <div class="ticker-item">⚡ <span>Spot Payments Live</span></div>
+            <div class="ticker-item">🦋 <span>Emo AI Integrated</span></div>
+            <div class="ticker-item">🎬 <span>Community Governed</span></div>
+            <div class="ticker-item">🪙 <span>Emo Coins + TheWall</span></div>
+            <div class="ticker-item">📺 <span>100+ Offline Screens</span></div>
+            <div class="ticker-item">🔗 <span>5 Chain Wallet</span></div>
+            <div class="ticker-item">🎭 <span>Script Verification</span></div>
+            <!-- Duplicate for fluid infinity scrolling loops -->
+            <div class="ticker-item">⚡ <span>Spot Payments Live</span></div>
+            <div class="ticker-item">🦋 <span>Emo AI Integrated</span></div>
+            <div class="ticker-item">🎬 <span>Community Governed</span></div>
+            <div class="ticker-item">🪙 <span>Emo Coins + TheWall</span></div>
+            <div class="ticker-item">📺 <span>100+ Offline Screens</span></div>
+            <div class="ticker-item">🔗 <span>5 Chain Wallet</span></div>
+            <div class="ticker-item">🎭 <span>Script Verification</span></div>
+        </div>
+    </div>
+
+    <!-- METRICS DATA METADATA MATRIX -->
+    <section class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="val">100+</div>
+                <div class="lbl">Offline Screens Live</div>
+            </div>
+            <div class="stat-card">
+                <div class="val">LIVE</div>
+                <div class="lbl">Spot Payments Processed</div>
+            </div>
+            <div class="stat-card">
+                <div class="val">5</div>
+                <div class="lbl">Chains Supported natively</div>
+            </div>
+            <div class="stat-card">
+                <div class="val">∞</div>
+                <div class="lbl">Community Governed Nodes</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DYNAMIC SYSTEM FILE INFRASTRUCTURE SHOWCASE -->
+    <section class="container asset-showcase">
+        <div class="asset-title">SYSTEM WORKSPACE UI MAP ASSETS REGISTERED</div>
+        <div class="asset-grid">
+            <div class="asset-box">📦 62009.png <span>Media Content Grid Frame</span></div>
+            <div class="asset-box">📦 62011.png <span>Community Workspace Center</span></div>
+            <div class="asset-box">📦 62008.png <span>Emo AI Smart Control Deck</span></div>
+            <div class="asset-box">📦 60401.png <span>Thewall Smart Crypto Wallet</span></div>
+            <div class="asset-box">📦 60336.png <span>Hey Students Interface Gateway</span></div>
+            <div class="asset-box">📦 52251.jpg <span>Ecosystem Operational Core DNA</span></div>
+            <div class="asset-box">📦 52477.png <span>System Architecture Handshake Node</span></div>
+            <div class="asset-box">📦 52478.png <span>Database Sync Logs Pipeline</span></div>
+            <div class="asset-box">📦 ...19054.png <span>UI Dashboard Asset Layer</span></div>
+            <div class="asset-box">📦 ...19010.png <span>Backend Integration Map</span></div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS (FOUR STEPS TO EARNING) -->
+    <section class="container" id="how-it-works" style="margin-bottom: 8px;">
+        <div class="section-header">
+            <h3>Four Steps to Earning</h3>
+            <p>Upload, watch, earn Emo Coins — convert via TheWall straight into multi-chain crypto assets or real liquidity pools. We guide your pipeline step by step.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="step-icon">📱</div>
+                <h4>Join & Login Daily</h4>
+                <p>Sign up free. Every single daily login execution gives +1 Emo Coin automatically. Build your continuous streak to multiply baseline system rewards.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="step-icon">🎬</div>
+                <h4>Watch or Upload</h4>
+                <p>Earn native coins matching your actual active watch time metrics. Content creators scale earnings via organic views, engagement bounds, and direct fan Spot Payments.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="step-icon">🪙</div>
+                <h4>Stack Emo Coins</h4>
+                <p>Coins safely append inside your local integrated Ddott Wallet layer. Subscribe to premium independent creators, issue micro-tips, or hold assets.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <div class="step-icon">🔗</div>
+                <h4>Convert via TheWall</h4>
+                <p>Directly bind your Web3 non-custodial wallet routing framework. Convert accumilated Emo Coins to ETH, SOL, ARB, MON, or BTC instantly. We educate you how.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLATFORM CORE FEATURES LAYOUT GRID -->
+    <section class="container" id="features">
+        <div class="section-header">
+            <h3>Everything in One Place</h3>
+            <p>High tier operational systems running seamlessly on zero middle-men parameters.</p>
+        </div>
+        <div class="features-layout">
+            
+            <div class="feat-box">
+                <div class="feat-top">
+                    <h4><span>⚡</span> Spot Payment Integration</h4>
+                    <p>Enable instant non-custodial Web3 network payments directly targeting original creators. Fans clear transactions in real time without processing latency, delays, or platform deductions. Toggle features via Creator Studio interface blocks instantly.</p>
+                </div>
+            </div>
+
+            <div class="feat-box">
+                <div class="feat-top">
+                    <h4><span>🎭</span> Script Verification Protocol</h4>
+                    <p>All structured content sequences move through rigorous automated verification checks prior to broadcasting live. Protects community distribution integrity while tracking operational execution stages within the personal live Creator Dashboard.</p>
+                </div>
+            </div>
+
+            <div class="feat-box">
+                <div class="feat-top">
+                    <h4><span>💳</span> Dashboard Wallet Terminal</h4>
+                    <p>Integrated wallet metrics holding Emo Coins and mapping directly into external decentralized multi-chain keys. Track full transactional history logs from one dashboard block.</p>
+                </div>
+                <div class="wallet-mock">
+                    <div class="mock-row"><span class="mock-lbl">TOTAL DDOTT COINS</span><span class="mock-val" style="color:var(--accent-gold);">$7,890.45</span></div>
+                    <div class="mock-row"><span class="mock-lbl">BOUND WEB3 WALLET</span><span class="mock-val" style="color:var(--accent-cyan);">0x...8ea3 ✓</span></div>
+                    <div class="mock-row"><span class="mock-lbl">SPOT TRANSACTION PAY</span><span class="mock-val" style="color:#10b981;">ENABLED</span></div>
+                </div>
+            </div>
+
+            <div class="feat-box">
+                <div class="feat-top">
+                    <h4><span>💬</span> Community Messaging Matrix</h4>
+                    <p>Rich communication mechanics supporting high performance text parsing, voice logs, custom developer sticker packs, and instant graphic media sharing. Native 1-on-1 direct messaging and aggregate team structural chat boards run continuous voice-to-text transcriptions.</p>
+                </div>
+            </div>
+
+            <div class="feat-box">
+                <div class="feat-top">
+                    <h4><span>📊</span> Advanced Creator Studio</h4>
+                    <p>Deep analytical performance dashboards tracking retention trends, live user engagements, decentralized agreement document chains, and transparent continuous payout histories.</p>
+                </div>
+            </div>
+
+            <div class="feat-box" style="background: linear-gradient(135deg, rgba(147,51,234,0.1) 0%, rgba(12,19,34,0.8) 100%); border-color: var(--border-glow);">
+                <div class="feat-top">
+                    <h4><span>🦋</span> Emo Coin Core Economy</h4>
+                    <p>Real computational interaction maps into automated value metrics. Every digital footprint stacks system value parameters backed by clear transformation frameworks.</p>
+                </div>
+                <ul style="list-style: none; font-size: 13px; font-family: var(--font-mono); color: var(--text-primary); padding-top: 10px;">
+                    <li style="margin-bottom: 6px;">🟢 +1 Daily login streak automation</li>
+                    <li style="margin-bottom: 6px;">🟢 +⏱ Continuous watch time reward matrix</li>
+                    <li style="margin-bottom: 6px;">🟢 +👁 Creator performance metric scaling</li>
+                    <li style="margin-bottom: 6px;">🟢 ₿ Convert via TheWall → Crypto → Liquid Cash</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- COMMUNITY CINEMA OFFLINE BLOCK -->
+    <section class="container">
+        <div class="cinema-banner">
+            <div style="max-width: 600px;">
+                <h3 style="font-size: 28px; font-weight: 800; margin-bottom: 12px;">Community Cinema: Beyond the Screen</h3>
+                <p style="color: var(--text-secondary); font-size: 15px;">Ddott TV scales past desktop limits. We deploy physical media nodes directly inside rural areas, towns, and cities — hosting offline structural screens where local populations engage with Ddott Originals together. Spot Payment terminals maintain operational validation completely offline.</p>
+                <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 13px; color: var(--accent-cyan);">
+                     "Your Community, Your Cinema" — Everywhere, For Everyone.
+                </div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-muted); padding: 24px; border-radius: 12px; font-family: var(--font-mono); min-width: 260px; text-align: center;">
+                <div style="font-size: 11px; color: var(--text-secondary);">NOW SHOWING</div>
+                <div style="font-size: 16px; font-weight: bold; margin: 8px 0; color: #fff;">THE SCROLL OF HOPE</div>
+                <span style="font-size: 10px; background: rgba(168,85,247,0.2); color: var(--accent-purple); padding: 2px 8px; border-radius: 4px;">⚡ SPOT ACCESSIBLE</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- THREE ECOSYSTEM MODES -->
+    <section class="container" id="modes">
+        <div class="section-header">
+            <h3>Three Operational Modes. One Unified Core.</h3>
+            <p>Access full multi-platform deployment instances through an isolated cryptographic Emo Key validation handshake.</p>
+        </div>
+        <div class="modes-grid">
+            <div class="mode-card emowall">
+                <div style="font-size: 32px; margin-bottom: 16px;">🦋</div>
+                <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">EMOWALL MODE</h4>
+                <p style="font-size: 14px; color: var(--text-secondary);">Safety focused AI interface engine running 8 specialized behavior nodes backed by an advanced 7-brains validation architecture. Deep emotional analytics form the security backbone.</p>
+            </div>
+            <div class="mode-card ddott">
+                <div style="font-size: 32px; margin-bottom: 16px;">📺</div>
+                <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">DDOTT TV INSTANCE</h4>
+                <p style="font-size: 14px; color: var(--text-secondary);">Complete decentralized processing layer. Stream, analyze retention, deploy content modules, activate open network micro-payment pipelines with ease.</p>
+            </div>
+            <div class="mode-card creator">
+                <div style="font-size: 32px; margin-bottom: 16px;">🛠</div>
+                <h4 style="font-size: 20px; font-weight: 700; margin-bottom: 10px;">CREATOR HUB WORKSPACE</h4>
+                <p style="font-size: 14px; color: var(--text-secondary);">Enterprise level tooling layers grouping cross-channel traffic analysis systems, instant contract settlement verification protocols, and token data feeds.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ADVANCED VISION: FUTURE INTEGRATIONS & PIPELINE BLOCK (HEY STUDENTS & EMOWALL SOS) -->
+    <section class="container id="pipeline"">
+        <div class="coming-soon-sec">
+            <div class="section-header" style="text-align: left; margin-bottom: 0;">
+                <span style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 8px;">🔮 PIPELINE VISION ARCHITECTURE</span>
+                <h3 style="font-size: 36px; font-weight: 800;">Integrated Upgrades Coming Soon</h3>
+                <p style="margin: 8px 0 0 0; max-width: 800px;">How the Dwin structural ecosystem addresses high-risk child protection scenarios and expands global educational democratization parameters through advanced nodes.</p>
+            </div>
+
+            <div class="pipeline-grid">
+                
+                <!-- UPGRADE 1: SOS EMERGENCY ROUTING -->
+                <div class="pipe-card danger-gate">
+                    <div class="pipe-badge">SYSTEM INTEGRATION</div>
+                    <h4>Emowall SOS Kidnapping Live Streaming Gate</h4>
+                    <p class="pipe-desc"><strong>Core Intentions & Functional Mechanics:</strong> Absolute safety system built to protect children and individuals during critical situational emergencies. When a structural SOS trigger event initiates on an integrated device, the system demands an encrypted app-approval handshake confirmation via the companion Emowall app. Upon parental biometric/PIN clearance, the engine directly routes an automated encrypted stream straight onto Ddott.TV's live network pages.</p>
+                    <p class="pipe-desc">To ensure operational protection, background AI layers continuously analyze incoming data, dynamically stripping out malicious bot instructions, script injection strings, or hostile command inputs before they reach the interface. The system keeps exact location tracks strictly confidential (accessible only by legal protection clusters) while mobilizing decentralized crowd-support monitoring to guide rescue tracking efforts smoothly.</p>
+                    <div class="pipe-malayalam">
+                        Emowall App verification approval process complete aayale Ddott TV live SOS routing module functional aaku. Data validation filter system level-il built-in aayi pre-configured ആണ്.
+                    </div>
+                </div>
+
+                <!-- UPGRADE 2: HEY STUDENTS SYSTEM STRUCTURE -->
+                <div class="pipe-card edu-gate">
+                    <div class="pipe-badge">EDUCATION LAYER</div>
+                    <h4>Thewall Crypto Teacher & "Hey Students" Node</h4>
+                    <span class="teacher-quote">"Hey Students, Good Morning!"</span>
+                    <p class="pipe-desc"><strong>Ecosystem Origin & Mindset:</strong> Derived directly from the natural human touch of a real classroom teacher stepping up to the podium and addressing their class with care, warmth, and structural focus. The <strong>"Hey Students"</strong> platform functions as a decentralized global learning framework built to bridge knowledge gaps for students and technical learners everywhere without cost restrictions.</p>
+                    <p class="pipe-desc"><strong>Strategic Value Grid:</strong> This module connects advanced non-custodial crypto wallet analytical backends (Thewall 5-chain framework) straight into conversational Community AI Teacher nodes. Students can safely explore cryptographic ledger verification math, complex functional programming logic, and structural algorithmic code architecture without premium fees or resource limits. Real learning checkpoints unlock system utility tokens mapped from the global ecosystem pool.</p>
+                    <div class="pipe-malayalam">
+                        Padikkaan aagrahikkunna kuttikalkkum yuvalifekalkkum technical ledger protocols, software compilation frameworks complete free aayi interactive space-il live aayi execute cheyyan olla structural module aadeed aakkee.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DWIN UNIVERSE MAP MATRIX -->
+    <section class="container matrix-sec">
+        <div class="asset-title" style="margin-bottom: 24px;">DWIN UNIVERSE INTEGRATION PROTOCOL LINKS</div>
+        <div class="matrix-grid">
+            <div class="matrix-box">
+                <h5>Ddott TV</h5>
+                <p>Content distribution network handling decentralized media execution patterns and instant micro-payments.</p>
+            </div>
+            <div class="matrix-box">
+                <h5>Thewall</h5>
+                <p>Gasless secure 5-chain non-custodial Web3 smart wallet framework managing transaction execution boundaries.</p>
+            </div>
+            <div class="matrix-box">
+                <h5>Emowall AI</h5>
+                <p>Behavior-tracking assistant utilizing deep neural weights and safety models across 8 specific modes.</p>
+            </div>
+            <div class="matrix-box">
+                <h5>Emo AI Pro</h5>
+                <p>Advanced natural language processing companion engine running fluid aesthetic butterfly interface systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER MATRICES BLOCK -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h4>d 🦋 DdottTV</h4>
+                    <p>Your Community, Your Cinema. Merging advanced emotional intelligence nodes with multi-chain media transaction architectures safely.</p>
+                    <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent-cyan); margin-top: 10px;">
+                        SYSTEM DATA ROUTE: Ddott.tv@mail.ru
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Product Layout</h5>
+                    <ul>
+                        <li><a href="#features">Spot Payment Modules</a></li>
+                        <li><a href="#features">Creator Studio Panels</a></li>
+                        <li><a href="#features">Script Verification Check</a></li>
+                        <li><a href="#features">Community Cinema Node</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ecosystem Cluster</h5>
+                    <ul>
+                        <li><a href="#">TheWall Framework</a></li>
+                        <li><a href="#">Emowall AI Core</a></li>
+                        <li><a href="#">Emo AI Pro Assistant</a></li>
+                        <li><a href="#">Emobies Application</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Platform Integrity</h5>
+                    <ul>
+                        <li><a href="#">Ecosystem Blog</a></li>
+                        <li><a href="#">Privacy Protocol Shroud</a></li>
+                        <li><a href="#">Terms of Architecture Use</a></li>
+                        <li><a href="#">System Integrity Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom" id="waitlist">
+                <div>© 2026 Ddott TV · Dwin Universe Engineering Network Layer v3.9. Standalone System Terminal.</div>
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan);">
+                    Designed, Maintained & Driven by Thewin / Dwin — Divine Victory Architecture
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
