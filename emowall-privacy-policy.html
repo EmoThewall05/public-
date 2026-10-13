@@ -15,63 +15,50 @@
 <body>
 <h1>Privacy Policy</h1>
 <p><strong>Emowall AI 2.0</strong> — Your Family's Guardian</p>
-<p>Effective Date: September 2026</p>
+<p>Effective date: October 2026</p>
 
-<h2>Introduction</h2>
-<p>Emowall AI ("we", "our", "us") is committed to protecting the privacy and safety of the families, children, and schools who use our app. This Privacy Policy explains what data we collect, why we collect it, how it is used, and how you can control it.</p>
+<h2>About this app</h2>
+<p>Emowall is a personal safety app. It is meant to be used by or under the supervision of a parent, guardian or school. This policy explains what data the app uses, where it goes, and how you can delete it.</p>
 
-<h2>Data We Collect</h2>
-<p>• <strong>Location data</strong> — Used for Guardian Mode GPS tracking and safe-zone alerts, so that a parent or guardian can be notified if a child leaves a designated safe area.</p>
-<p>• <strong>Microphone / Audio data</strong> — Used to detect distress sounds, crying, or threatening speech. Audio is processed on-device in real time and is not recorded or stored on our servers.</p>
-<p>• <strong>Camera</strong> — Used only during an active Shield Mode emergency to capture evidence. The camera is not used for continuous monitoring or surveillance.</p>
-<p>• <strong>Health Connect data (heart rate, blood oxygen) and body sensor data</strong> — Used, with your explicit permission, solely to detect signs of physical distress (such as an abnormal heart rate or a fall) and to trigger a safety alert. This is not used for any medical diagnosis or health advice.</p>
-<p>• <strong>Emergency contacts</strong> — Phone numbers you provide for a parent, relative, or school principal, used only to deliver SOS alerts.</p>
-<p>• <strong>Account information</strong> — Basic authentication data (e.g. email) used to identify your account and link it to your configured emergency contacts and settings.</p>
+<h2>Data we use and why</h2>
+<p>• <strong>Account</strong> — your sign-in details (email, name, user ID) through Firebase Authentication.</p>
+<p>• <strong>Emergency contacts</strong> — name, relation and phone number of the people you add. Stored on our server (Supabase) so alerts can be delivered.</p>
+<p>• <strong>Location</strong> — used to detect unsafe zones and to share live location with your emergency contacts during an SOS.</p>
+<p>• <strong>Voice</strong> — while Active Protection is on, the app listens for danger words using the Android speech recognition service, which is provided by Google and may process audio on Google's servers. Emowall does not record audio and does not store it.</p>
+<p>• <strong>Photos and videos you choose</strong> — in Animal Alert, the photo is sent through our server function (Cloudflare Workers) to Anthropic's AI service to identify the animal. In Media Check, the photo or video you choose is sent to Google's Gemini AI. These are sent only when you start the scan. Emowall does not keep a copy.</p>
+<p>• <strong>Profile photo</strong> — if you choose to save one, it is stored on our server (Supabase).</p>
+<p>• <strong>Health Connect (heart rate, blood oxygen)</strong> — read only after you agree in the app, to detect possible physical distress as one signal during Kidnap Mode. This is not a medical device and does not diagnose anything. A reading may be included in an alert message if it triggers one.</p>
+<p>• <strong>Motion sensor</strong> — used on the phone for fall and shake detection.</p>
+<p>• <strong>Alert details</strong> — when an SOS is triggered, the alert contains the name, the reason, and the location.</p>
 
-<h2>How We Use Your Data</h2>
-<p>• Location, audio, and sensor data are used exclusively to power real-time safety detection and alerting features.</p>
-<p>• Health and sensor data never leaves your device except as part of an emergency alert that you or the app's detection system has triggered.</p>
-<p>• Emergency contact information is used only to deliver the alert messages you have configured the app to send.</p>
-<p>• We do not use any of this data for advertising, profiling, or any purpose unrelated to child and family safety.</p>
+<h2>Who receives data (service providers)</h2>
+<p>We use these providers only to run the features above:</p>
+<p>• <strong>Google</strong> (Firebase sign-in, Android speech recognition, Gemini)</p>
+<p>• <strong>Supabase</strong> (emergency contacts, profile photo)</p>
+<p>• <strong>Twilio</strong> (sending SMS alerts to your emergency contacts)</p>
+<p>• <strong>Telegram and Discord</strong> (alert channels operated by the Emowall team)</p>
+<p>• <strong>Cloudflare and Anthropic</strong> (Animal Alert image analysis)</p>
+<p>Each provider handles data under its own privacy policy. We do not sell your data and we do not use it for advertising.</p>
 
-<h2>How Emergency Alerts Are Delivered (Third-Party Processors)</h2>
-<p>When an emergency is detected or manually triggered, Emowall sends an alert containing the child's name, the reason for the alert, and location to the emergency contacts you have configured. To deliver this reliably, we use the following third-party processors, each acting only under our instructions:</p>
-<p>• <strong>Supabase</strong> — securely stores emergency contact information and coordinates alert delivery.</p>
-<p>• <strong>Twilio</strong> — delivers SMS alert messages to your configured emergency contacts.</p>
-<p>• <strong>Telegram and Discord</strong> — optional additional alert channels, governed by their own respective privacy policies when used.</p>
-<p>• <strong>Firebase (Google)</strong> — used for account authentication and core app infrastructure, subject to Google's privacy policy.</p>
-<p>We do not sell, rent, or share your personal data with advertisers or data brokers.</p>
+<h2>Retention and deletion</h2>
+<p>• Emergency contacts and your profile photo are kept until you delete them in the app or ask us to delete your account.</p>
+<p>• Photos sent for Animal Alert and Media Check are not saved by Emowall.</p>
+<p>• To delete your account and all related data, email meradivin@gmail.com. We will process the request within 30 days.</p>
 
-<h2>Data Retention & Deletion</h2>
-<p>• Location, audio, and sensor data are processed in real time for detection purposes and are not stored on our servers.</p>
-<p>• Emergency contact numbers are retained only for as long as your account remains active.</p>
-<p>• Health tracking and child mood data are stored locally on your device only, and are never uploaded to our servers.</p>
-<p>• You may request full deletion of your account and all associated data at any time by emailing meradivin@gmail.com. Requests are processed within 30 days.</p>
+<h2>Permissions</h2>
+<p>Location, microphone, camera, Health Connect (heart rate and blood oxygen), notifications, and internet. Each permission is requested in the app with an explanation, and you can withdraw it at any time in your phone's settings.</p>
 
-<h2>Permissions We Request</h2>
-<p>• <strong>Location</strong> — Guardian Mode GPS and safe-zone alerts</p>
-<p>• <strong>Microphone</strong> — Sound and distress detection</p>
-<p>• <strong>Camera</strong> — Evidence capture during an active Shield Mode emergency</p>
-<p>• <strong>Health Connect / Body Sensors</strong> — Heart rate and blood oxygen monitoring for physical distress detection</p>
-<p>• <strong>Phone / Contacts</strong> — Emergency SOS calling</p>
-<p>• <strong>Notifications</strong> — Safety alerts and guardian notifications</p>
-<p>Each permission is used strictly for the safety feature described above, and you will be shown an in-app explanation before any permission is requested.</p>
+<h2>Children</h2>
+<p>Emowall is intended to be set up and controlled by a parent, guardian or school. Emergency contacts and alerts are managed by the adult account holder.</p>
 
-<h2>Children's Privacy</h2>
-<p>Emowall is built to protect children, and all child safety features are configured and controlled by a parent, guardian, or authorized school administrator — never by the child directly. We do not knowingly collect personal data from children beyond what is strictly necessary to provide these safety features, and wherever possible, child-related data (such as mood tracking) is processed and stored locally on the device.</p>
+<h2>Security</h2>
+<p>Data is sent over HTTPS. Access to emergency contacts and profile photos goes through server functions that verify your sign-in before returning or changing anything.</p>
 
-<h2>Data Security</h2>
-<p>We use industry-standard encryption for data in transit and at rest. Emergency contact data is protected using row-level security on our backend database and is accessible only through authenticated requests.</p>
+<h2>Changes</h2>
+<p>If we change this policy, we will update the date at the top of this page.</p>
 
-<h2>Your Rights</h2>
-<p>You may access, correct, or delete your data, and withdraw any permission at any time through your device settings or by contacting us directly at the email below.</p>
-
-<h2>Changes to This Policy</h2>
-<p>We may update this Privacy Policy periodically. Material changes will be reflected by updating the effective date at the top of this page.</p>
-
-<h2>Contact Us</h2>
+<h2>Contact</h2>
 <p>Email: <a href="mailto:meradivin@gmail.com">meradivin@gmail.com</a></p>
 <p>Website: <a href="https://emobies.org">emobies.org</a></p>
-
 </body>
 </html>
