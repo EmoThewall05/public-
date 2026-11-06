@@ -1,63 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Privacy Policy — Emowall AI</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Emowall AI 2.0</title>
 <style>
-  body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #07080B; color: #ffffff; }
-  h1 { color: #00E5FF; }
-  h2 { color: #7C3AED; }
-  p { color: #cccccc; line-height: 1.6; }
-  a { color: #00E5FF; }
+  body { font-family: Arial, Helvetica, sans-serif; line-height: 1.6; max-width: 760px; margin: 0 auto; padding: 20px 16px 48px; color: #1a1a1a; background: #ffffff; }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  h2 { font-size: 19px; margin-top: 28px; }
+  p, li { font-size: 16px; }
+  .meta { color: #555; font-size: 14px; }
+  .box { background: #f3f6f9; border-left: 4px solid #2a7ae4; padding: 10px 14px; margin: 16px 0; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #111519; color: #e8e8e8; }
+    .meta { color: #aaa; }
+    .box { background: #1b222a; }
+    a { color: #7db3ff; }
+  }
 </style>
 </head>
 <body>
 <h1>Privacy Policy</h1>
-<p><strong>Emowall AI 2.0</strong> — Your Family's Guardian</p>
-<p>Effective date: October 2026</p>
+<p class="meta"><strong>Emowall AI 2.0</strong> - Your Family's Guardian<br>
+Developer: Dwin Universe<br>
+Last updated: 6 November 2026</p>
 
-<h2>About this app</h2>
-<p>Emowall is a personal safety app. It is meant to be used by or under the supervision of a parent, guardian or school. This policy explains what data the app uses, where it goes, and how you can delete it.</p>
+<p>This policy explains what information Emowall AI 2.0 ("Emowall", "the app", "we") collects, why we collect it, and who receives it. By using the app you agree to this policy.</p>
 
-<h2>Data we use and why</h2>
-<p>• <strong>Account</strong> — your sign-in details (email, name, user ID) through Firebase Authentication.</p>
-<p>• <strong>Emergency contacts</strong> — name, relation and phone number of the people you add. Stored on our server (Supabase) so alerts can be delivered.</p>
-<p>• <strong>Location</strong> — used to detect unsafe zones and to share live location with your emergency contacts during an SOS.</p>
-<p>• <strong>Voice</strong> — while Active Protection is on, the app listens for danger words using the Android speech recognition service, which is provided by Google and may process audio on Google's servers. Emowall does not record audio and does not store it.</p>
-<p>• <strong>Photos and videos you choose</strong> — in Animal Alert, the photo is sent through our server function (Cloudflare Workers) to Anthropic's AI service to identify the animal. In Media Check, the photo or video you choose is sent to Google's Gemini AI. These are sent only when you start the scan. Emowall does not keep a copy.</p>
-<p>• <strong>Profile photo</strong> — if you choose to save one, it is stored on our server (Supabase).</p>
-<p>• <strong>Health Connect (heart rate, blood oxygen)</strong> — read only after you agree in the app, to detect possible physical distress as one signal during Kidnap Mode. This is not a medical device and does not diagnose anything. A reading may be included in an alert message if it triggers one.</p>
-<p>• <strong>Motion sensor</strong> — used on the phone for fall and shake detection.</p>
-<p>• <strong>Alert details</strong> — when an SOS is triggered, the alert contains the name, the reason, and the location.</p>
+<h2>1. Information we collect</h2>
+<ul>
+  <li><strong>Emergency contacts.</strong> Names, relationships and phone numbers that you add. They are stored on our server (Supabase) so that alerts can be sent to them.</li>
+  <li><strong>Location.</strong> Collected while the app is in use. When an SOS or safety alert is active, your location is sent to our server and shared with your emergency contacts, for example through a live tracking link. This release does not collect location while the app is closed.</li>
+  <li><strong>Voice and sound.</strong> The microphone is used for voice commands and sound detection. Speech recognition may be handled by the speech service of your device or Google. We do not keep audio recordings on our servers.</li>
+  <li><strong>Camera, photos and media.</strong> If you use features that capture or analyze photos, video or audio (such as evidence recording or Media Verifier), that content is used to provide the feature and may be sent to AI service providers for analysis. You can also upload a profile photo.</li>
+  <li><strong>Health and sensor data.</strong> Data from your connected smartwatch or Health Connect (such as heart rate and motion) is used to detect emergencies. It may be sent to our server and stored so that alerts can be raised and reviewed.</li>
+  <li><strong>AI features.</strong> Text or voice you give to AI features (for example Emo Care, Child Doctor AI, Digital Amma, Women's Health) is sent to third-party AI service providers to generate a reply.</li>
+  <li><strong>Animal incident records.</strong> If you report an attack or bite, we record the type of animal or creature you select, the time and the place, so that first-aid information and a summary for a doctor can be shown.</li>
+  <li><strong>Account data.</strong> Login details (such as email address or phone number) handled through Firebase.</li>
+</ul>
 
-<h2>Who receives data (service providers)</h2>
-<p>We use these providers only to run the features above:</p>
-<p>• <strong>Google</strong> (Firebase sign-in, Android speech recognition, Gemini)</p>
-<p>• <strong>Supabase</strong> (emergency contacts, profile photo)</p>
-<p>• <strong>Twilio</strong> (sending SMS alerts to your emergency contacts)</p>
-<p>• <strong>Cloudflare and Anthropic</strong> (Animal Alert image analysis)</p>
-<p>Each provider handles data under its own privacy policy. We do not sell your data and we do not use it for advertising.</p>
+<h2>2. How we use the information</h2>
+<ul>
+  <li>To detect emergencies and send alerts (push notifications and SMS) to your emergency contacts.</li>
+  <li>To show safety and first-aid information.</li>
+  <li>To improve the quality of safety analysis with AI services.</li>
+  <li>To provide, secure and support the app and your subscription.</li>
+</ul>
+<p>We do not sell your personal data.</p>
 
-<h2>Retention and deletion</h2>
-<p>• Emergency contacts and your profile photo are kept until you delete them in the app or ask us to delete your account.</p>
-<p>• Photos sent for Animal Alert and Media Check are not saved by Emowall.</p>
-<p>• To delete your account and all related data, email meradivin@gmail.com. We will process the request within 30 days.</p>
+<h2>3. Who receives information</h2>
+<ul>
+  <li><strong>Your emergency contacts</strong>, only when an alert is sent.</li>
+  <li><strong>Service providers</strong> that help us run the app: Supabase (database and server functions), Google (Firebase, Google Play, Health Connect), Twilio (SMS delivery) and third-party AI service providers. They receive only the information needed to provide their service.</li>
+  <li><strong>Authorities or others</strong> if required by law or to protect someone's life.</li>
+</ul>
+<p>Payments for subscriptions are handled by Google Play. We do not receive your card details.</p>
+<p>Your information may be processed in countries other than your own, where our providers operate.</p>
 
-<h2>Permissions</h2>
-<p>Location, microphone, camera, Health Connect (heart rate and blood oxygen), notifications, and internet. Each permission is requested in the app with an explanation, and you can withdraw it at any time in your phone's settings.</p>
+<h2>4. Children</h2>
+<div class="box">Emowall is intended for adults. Parents or guardians may use it to protect a child, and any account or contact details for a child must be created and managed by a parent or guardian. We do not knowingly collect personal information directly from children without a parent or guardian. If you believe a child has given us information without permission, contact us and we will delete it.</div>
 
-<h2>Children</h2>
-<p>Emowall is intended to be set up and controlled by a parent, guardian or school. Emergency contacts and alerts are managed by the adult account holder.</p>
+<h2>5. Not a medical device</h2>
+<p>Emowall provides general safety and first-aid information. It does not give medical advice, diagnosis or treatment, and it cannot guarantee that an emergency will be detected or that an alert will be delivered. In an emergency, call your local emergency number or go to the nearest hospital.</p>
 
-<h2>Security</h2>
-<p>Data is sent over HTTPS. Access to emergency contacts and profile photos goes through server functions that verify your sign-in before returning or changing anything.</p>
+<h2>6. Permissions</h2>
+<p>The app may ask for: location, microphone, camera, notifications, and access to health and sensor data from your watch. You can turn permissions off in your phone settings, but some safety features will then stop working.</p>
 
-<h2>Changes</h2>
-<p>If we change this policy, we will update the date at the top of this page.</p>
+<h2>7. Retention and deletion</h2>
+<p>We keep your information while your account is active. You can delete your emergency contacts inside the app. To delete your account and all data linked to it, email <a href="mailto:info@emothewall.online">info@emothewall.online</a> from your registered account and we will delete it within 30 days, except where the law requires us to keep some records.</p>
 
-<h2>Contact</h2>
-<p>Email: <a href="mailto:meradivin@gmail.com">meradivin@gmail.com</a></p>
-<p>Website: <a href="https://emobies.org">emobies.org</a></p>
+<h2>8. Your rights</h2>
+<p>Depending on where you live, you may have the right to access, correct, export or delete your data, or to object to some uses. Contact us at the email below to use these rights.</p>
+
+<h2>9. Security</h2>
+<p>Data is sent over encrypted connections and stored with reputable providers. No system is completely secure, so we cannot guarantee absolute security.</p>
+
+<h2>10. Changes to this policy</h2>
+<p>We will update this page when features or data practices change and will change the date above.</p>
+
+<h2>11. Contact</h2>
+<p>Dwin Universe<br>
+Email: <a href="mailto:info@emothewall.online">info@emothewall.online</a><br>
+Website: <a href="https://web.emothewall.online/">web.emothewall.online</a></p>
 </body>
 </html>
